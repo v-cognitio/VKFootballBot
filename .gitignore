@@ -22,3 +22,4 @@ hs_err_pid*
 VKFootballBot.iml
 resources/
 /src/main/resources/config.properties
+/README.md
