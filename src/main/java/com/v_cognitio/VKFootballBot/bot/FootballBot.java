@@ -60,13 +60,15 @@ public class FootballBot {
     private void holdCL(Message message, String query) {
         if (Pattern.matches("^/cl\\s*[\\d]+", query)) {
             try {
-                sendTextMessage(resolveId(message),
-                        "fetching..");
+                //sendTextMessage(resolveId(message),
+                //        "fetching..");
+                //TODO:: log this
                 int groupTour = Integer.parseInt(query.split(" ")[1].trim());
                 sendTextMessage(resolveId(message),
                         CLInfoGetter.getGroupTour(groupTour));
-                sendTextMessage(resolveId(message),
-                        "end..");
+                //sendTextMessage(resolveId(message),
+                //        "end..");
+                //TODO:: log this
             }
             catch (IllegalArgumentException e) {
                 sendTextMessage(resolveId(message),
@@ -86,12 +88,14 @@ public class FootballBot {
     private void holdTable(Message message, String query) {
         if (Pattern.matches("^/table\\s+.*", query)) {
             try {
-                sendTextMessage(resolveId(message),
-                        "fetching..");
+                //sendTextMessage(resolveId(message),
+                //        "fetching..");
+                //TODO:: log this
                 sendTextMessage(resolveId(message),
                         LeagueInfoGetter.getTable(query.split(" ")[1]).trim());
-                sendTextMessage(resolveId(message),
-                        "end..");
+                //sendTextMessage(resolveId(message),
+                //        "end..");
+                //TODO:: log this
             }
             catch (IllegalArgumentException e) {
                 sendTextMessage(resolveId(message),

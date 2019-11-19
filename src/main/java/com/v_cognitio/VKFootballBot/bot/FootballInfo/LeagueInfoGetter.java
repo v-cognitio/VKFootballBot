@@ -31,6 +31,8 @@ public class LeagueInfoGetter {
         Document doc;
         try {
             doc = Jsoup.connect(generateLeagueLink(league)).get();
+            //TODO:: rewrite it via OkHTTP, replace connection and loading data to an another method
+            //TODO:: add logging in connection method
         }
         catch (IllegalArgumentException e) {
             throw new IllegalArgumentException("League with name " + league + " isn't supported");

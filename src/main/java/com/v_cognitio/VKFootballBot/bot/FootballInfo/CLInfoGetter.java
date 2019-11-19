@@ -49,7 +49,7 @@ public class CLInfoGetter {
     }
 
     private static Elements loadDataFromURL(String url) throws IOException {
-        System.out.println("startParse");
+        //TODO:: add logging
         /*Request request = new Request.Builder()
                 .url(url)
                 .build();
@@ -57,8 +57,8 @@ public class CLInfoGetter {
         Response response = client.newCall(request)
                 .execute();
 
-        System.out.println("endParse");
         Document doc = Jsoup.parse(response.body().byteStream(), "UTF-8", url);*/
+        //TODO:: rewrite if via OkHTTP (like commented code)
         Document doc = Jsoup.connect(url).get();
         return doc.getElementsByClass("live_comptt_bd");
     }
