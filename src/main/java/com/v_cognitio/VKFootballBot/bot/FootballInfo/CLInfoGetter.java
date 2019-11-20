@@ -40,6 +40,14 @@ public class CLInfoGetter {
         return res.toString();
     }
 
+    public static String getAvailableTours() throws IOException {
+        StringBuffer res = new StringBuffer();
+        res.append("Прошедшие туры:\n")    .append(getToursFromElements(loadResultsInfo()))
+           .append("\nПредстоящие туры:\n").append(getToursFromElements(loadScheduleInfo()));
+
+        return res.toString();
+    }
+
     private static Elements loadResultsInfo() throws IOException {
         return loadDataFromURL(resultsURL);
     }
@@ -71,6 +79,16 @@ public class CLInfoGetter {
             }
         }
         return null;
+    }
+
+    private static String getToursFromElements(Elements page) {
+        StringBuffer res = new StringBuffer();
+        for (Element t : page) {
+            res.append("●").
+                    append(t.getElementsByClass("block_header").get(0).ownText()).append('\n');
+        }
+
+        return res.toString();
     }
 
 }

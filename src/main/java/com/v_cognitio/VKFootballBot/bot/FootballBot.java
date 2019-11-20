@@ -58,12 +58,18 @@ public class FootballBot {
     }
 
     private void holdCL(Message message, String query) {
-        if (Pattern.matches("^/cl\\s*[\\d]+", query)) {
+        if (Pattern.matches("^/cl\\s*\\S+", query)) {
+            String argument = query.split(" ")[1].trim();
             try {
                 //sendTextMessage(resolveId(message),
                 //        "fetching..");
                 //TODO:: log this
-                int groupTour = Integer.parseInt(query.split(" ")[1].trim());
+                if (argument.equals("tours")) {
+                    sendTextMessage(resolveId(message),
+                            CLInfoGetter.getAvailableTours());
+                    return;
+                }
+                int groupTour = Integer.parseInt(argument);
                 sendTextMessage(resolveId(message),
                         CLInfoGetter.getGroupTour(groupTour));
                 //sendTextMessage(resolveId(message),
@@ -72,7 +78,7 @@ public class FootballBot {
             }
             catch (IllegalArgumentException e) {
                 sendTextMessage(resolveId(message),
-                        e.getMessage());
+                        "Invalid argument, " + e.getMessage());
             }
             catch (Exception e) {
                 sendTextMessage(resolveId(message),
@@ -81,7 +87,7 @@ public class FootballBot {
         }
         else {
             sendTextMessage(resolveId(message),
-                    "Invalid arguments");
+                    "Invalid number of arguments");
         }
     }
 
