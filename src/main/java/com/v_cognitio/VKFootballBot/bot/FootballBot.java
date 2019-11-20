@@ -81,12 +81,12 @@ public class FootballBot {
         }
         else {
             sendTextMessage(resolveId(message),
-                    "Такой функции команда /cl не поддерживает");
+                    "Invalid arguments");
         }
     }
 
     private void holdTable(Message message, String query) {
-        if (Pattern.matches("^/table\\s+.*", query)) {
+        if (Pattern.matches("^/table\\s+\\S+", query)) {
             try {
                 //sendTextMessage(resolveId(message),
                 //        "fetching..");
@@ -108,7 +108,7 @@ public class FootballBot {
         }
         else {
             sendTextMessage(resolveId(message),
-                    "Необходимо указать аргументы");
+                    "Invalid number of arguments");
         }
     }
 
